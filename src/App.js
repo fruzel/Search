@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Nav from './components/Nav'
+import SearchBar from './components/SearchBar'
+import Results from './components/Results'
+import { useState } from "react";
 
 function App() {
+  const [results, setResults] = useState('');
+  const [searchType, setSearchType] = useState('search');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Nav setSearchType={setSearchType} setResults= {setResults} />
+     <SearchBar setResults= {setResults} searchType = {searchType} />
+     <Results  searchType = {searchType} results = {results} />
     </div>
   );
 }
